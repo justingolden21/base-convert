@@ -9,7 +9,7 @@ a simple number base converter with a reference chart
 
 <hr>
 
-1.0.7
+1.0.8
 
 by Justin Golden for RGB Studios
 

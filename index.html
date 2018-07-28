@@ -18,10 +18,11 @@
 <meta name="keywords" content="number, convert, converter, base, binary, octal, decimal, hexadecimal, hex">
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>   -->
@@ -32,7 +33,7 @@
 <body>
 
 <div class="text-center container">
-<h3 class="lead"><img id="logo" src="logo.svg" width="36px">Base Converter <small>v.1.0.7</small></h3>
+<h3 class="lead"><img id="logo" src="logo.svg" width="36px">Base Converter <small>v.1.0.8</small></h3>
 
 
 
@@ -64,7 +65,7 @@
 <hr>
 
 <div class="form-group text-center">
-  <label for="valConsole"><button class="btn btn-sm btn-default"><i id="reset" onclick="document.getElementById('valConsole').value='';" title="reset history" class="fas fa-history"></i></button> History</label>
+  <label for="valConsole"><button class="btn btn-sm btn-default"><i id="reset" title="reset history" class="fas fa-history"></i></button> History</label>
 <textarea id="valConsole" class="form-control text-center" rows="5"></textarea>
 <br>
 <a id="downloadLink" style="cursor:pointer;" title="download history as text file"><button class="btn btn-sm btn-default"><i class="fas fa-download"></i></button> Download history</a>
@@ -346,7 +347,7 @@ enter comma seperated list of items to convert
 seperate app: calculate 2^n chart, ascii conversion chart, link here, and byte/kb/mb/gb converter
 */
 
-let baseInput, baseInput1, baseInput2, baseInput3, val1Input, val2Input, operationInput, calcOutput;
+let baseInput, baseInput1, baseInput2, baseInput3, val1Input, val2Input, operationInput, calcOutput, valConsole;
 
 window.onload = function() {
 		
@@ -354,6 +355,7 @@ window.onload = function() {
 	let octal = document.getElementById("octal");
 	let decimal = document.getElementById("decimal");
 	let hex = document.getElementById("hex");
+	valConsole = document.getElementById("valConsole");
 
 	binary.select();
 	
@@ -375,8 +377,12 @@ window.onload = function() {
 		pageToPrint.document.write("<title>Reference Table | Base Converter</title><img src='chart.png' onload='print();'>");
 	}
 
+	document.getElementById("reset").onclick = function() {
+		valConsole.value = "";
+	}
+
 	document.getElementById("downloadLink").onclick = function() {
-		let consoleValue = document.getElementById("valConsole").value.split("\n");
+		let consoleValue = valConsole.value.split("\n");
 		let text = [];
 		for(item in consoleValue) {
 			text.push(consoleValue[item] + "\r\n");
@@ -488,12 +494,12 @@ function convert(e, base) {
 	decimal.value = decimalAns;
 	hex.value = decimalAns.toString(16).toUpperCase();
 	
-	document.getElementById("valConsole").value =
+	valConsole.value =
 	"Bin: " + decimalAns.toString(2) +
 	", Oct: " + decimalAns.toString(8) +
 	", Dec: " + decimalAns +
 	", Hex: " + decimalAns.toString(16).toUpperCase() + "\n\n" +	
-	document.getElementById("valConsole").value;
+	valConsole.value;
 
 	//unhighlight row
 	let trs = document.getElementsByTagName("tr");
@@ -502,7 +508,6 @@ function convert(e, base) {
 	}
 	//highlight row if applicable
 	if(decimalAns < 16 && decimalAns >= 0) {
-		console.log(document.getElementsByTagName("tr")[0]);
 		document.getElementsByTagName("tr")[decimalAns+1].classList.add("bg-info");
 	}
 }
