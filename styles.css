@@ -1,1 +1,21 @@
-a
+.bg-info {
+	padding: 4px !important;
+}
+textarea {
+	resize: vertical;
+}
+::-moz-selection {
+  background: #ccc;
+}
+::selection {
+  background: #ccc;
+}
+img {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+}
