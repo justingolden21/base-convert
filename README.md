@@ -3,6 +3,8 @@ Base Converter - RGB Studios
 
 a simple number base converter with a reference chart
 
+<a href="http://rgbstudios.org/base-convert">rgbstudios.org/base-convert</a>
+
 <img src="chart.png">
 
 <hr>
