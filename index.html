@@ -33,6 +33,7 @@
 <h3 class="lead"><img id="logo" src="logo.svg" width="36px">Base Converter <small>v.1.0.6</small></h3>
 
 <button title="Arithmetic and custom bases" type="button" class="btn btn-default" data-toggle="modal" data-target="#moreModal"><i class="fas fa-calculator"></i> Advanced Arithmetic</button>
+<button title="Learn about bases" type="button" class="btn btn-default" data-toggle="modal" data-target="#learnModal"><i class="fas fa-lightbulb"></i> Learn</button>
 <br><br>
 <div class="row">
 <div class="col-sm-6 col-lg-3">
@@ -226,6 +227,87 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+
+<div id="learnModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fas fa-lightbulb"></i> Learn</h4>
+      </div>
+      <div class="modal-body">
+      	<pre class="text-center">
+      		
+What are number bases?
+A base is a counting system. Base 10, or decimal
+uses the digits 0,1,2,3,4,5,6,7,8,9.
+Each number further left represents a power of 10.
+For example, 987 is 9 100s, 8 10s, and 7 1s
+or 9*10^2 + 8*10^1 + 7*10^0
+
+if we count in hexidecimal, which is base 16
+("hex" meaning 6 and "decimal" meaning 10),
+we have digits 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f
+Notice that 10 is a, 11 is b... and we go up to 15 (f), which is 16-1
+
+so for 3db in hex, instead of the 1s, 10s, and 100s place like decimal
+we have the 1s, 16s, and 256s places, for powers of 16 instead of powers of 10
+so 3db is 3*16^2 + d*16^1 + b*16^0 where d is 13 and b is 11
+so we have 3*256 + 13*16 + 11*1 = 768+208+11=987
+so 3db in hex is 987 in decimal.
+
+Similarly, we can convert decimal back to base 16:
+987/16 is 61 remainder 11
+61/16 is 3 remainder 13
+and 3 doesn't go into 16
+so we have 3, then 13, then 11, which is 3db
+
+if we count in binary, which is base 2 ("bi" meaning 2) we have digits 0 and 1
+the prefix "bi" is used in "bicycle", "bipetal", and "bilingual"
+and in octal (base 8, "oct" meaning 8) we have digits 0,1,2,3,4,5,6,7
+the prefix "oct" is used in "octopus"
+base 2,8, and 16 are used in programming often because theyre all powers of 2
+and data is stored in binary, and conversion between them is easy
+we count in decimal probably because we have ten fingers
+
+Converting between base 2, 8, and 16 is easy. 
+You can just look at the table below 
+and substitute every 4 binary digits for a hex digit, or 3 for an oct digit
+if the amount isnt divisable by 3 or 4 (whichever you need),
+pad the beginning with 0s.
+To convert from hex or oct, do the opposite.
+For example:
+3db in hex: 3 is 0011, d is 1101 and b is 1011, so 3db is 001111011011
+getting rid of the leading 0s we have 1111011011
+converting 1111011011 back, we add 0s to make the number of digits divisable by 4
+this is because 2^4 is 16.
+001111011011 split into groups of 4 is 0011 1101 1011 which in the table is 3, d, and b
+
+Sexigesimal (base 60) was used by ancient sumerians
+That is why there are 60 seconds in a minute and 360 degrees in a circle.
+Sometimes bases above 10 use lowercase letters, but most of the time it's capital.
+Bases above 36 often use both capital and lowercase.
+Sometimes base 26 starts at A (where Z is 0).
+We often use hexadecimal to abbreviate rgb colors because each color is between 0-255, 
+so each color is 2 hexidecimal digits.
+sometimes people call it "hex" instead of "hexidecimal", meaning 6 instead of 16.
+Most of the time you can assume "hex" actually means base 16 not base 6.
+Binary is sometimes called "bin"
+rgb hexidecimal codes often start with a "#",
+and are sometimes only 3 digits meaing they store the most significant digit only
+
+
+
+
+
+      	</pre>
+
+
+      </div>
+  	</div>
   </div>
 </div>
 
