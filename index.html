@@ -22,38 +22,13 @@
 <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 
-<style>
+<link href="styles.css" rel="stylesheet" type="text/css">
 
-.bg-info {
-	padding: 4px !important;
-}
-textarea {
-	resize: vertical;
-}
-
-::-moz-selection {
-  background: #ccc;
-}
-::selection {
-  background: #ccc;
-}
-
-img {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-drag: none;
-  user-drag: none;
-  -webkit-touch-callout: none;
-}
-
-</style>
 </head>
 <body>
 
 <div class="text-center container">
-	<h3 class="lead"><img id="logo" src="logo.svg" width="36px">Base Converter <small>v.1.0.4</small></h3>
+	<h3 class="lead"><img id="logo" src="logo.svg" width="36px">Base Converter <small>v.1.0.5</small></h3>
 
 <div class="row">
 <div class="col-sm-6 col-lg-3">
@@ -75,7 +50,8 @@ img {
 </div>
 <br>
 <p class="text-center bg-info">Hit <kbd>Enter</kbd> (or <kbd>Tab</kbd>) to calculate other values
-	<br><br>use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to navigate inputs</p>
+	<br><br>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to navigate inputs
+	<br><br>Use the up and down arrow keys while in an input to increment or decrement it</p>
 
 <hr>
 
@@ -201,6 +177,10 @@ img {
 </div>
 <script>
 /*TODO
+arrow keys up and down to change inputs.
+make negative and decimal work
+highlight corresponding table row if applicable after conversion
+
 maybe: copy and download buttons? night mode?
 work with negative and decimal.
 2^n chart or input. ascii chart and download?
@@ -211,17 +191,12 @@ enter comma seperated list of items to convert
 chose to and from bases
 */
 
-function printPage() {
-	console.log("hi");
-	this.print();
-}
-
 window.onload = function() {
 		
-	var binary = document.getElementById("binary");
-	var octal = document.getElementById("octal");
-	var decimal = document.getElementById("decimal");
-	var hex = document.getElementById("hex");
+	let binary = document.getElementById("binary");
+	let octal = document.getElementById("octal");
+	let decimal = document.getElementById("decimal");
+	let hex = document.getElementById("hex");
 
 	binary.select();
 	
@@ -239,20 +214,39 @@ window.onload = function() {
 	}
 
 	document.getElementById("printLink").onclick = function() {
-		pageToPrint = window.open();
-		pageToPrint.document.write("<img src='chart.png' onload='print();'>");
-		
-
+		let pageToPrint = window.open();
+		pageToPrint.document.write("<title>Reference Table | Base Converter</title><img src='chart.png' onload='print();'>");
 	}
 }
 
+let baseNames = {"binary":2, "octal":8, "decimal":10, "hex":16}
 
+window.onkeyup = function(e) {
+	if(e.keyCode != 38 && e.keyCode != 40)
+		return;
+	if(document.activeElement.nodeName != "INPUT")
+		return;
+
+	let base = baseNames[document.activeElement.id];
+	if(e.keyCode == 38) { //up
+		document.activeElement.value = add(document.activeElement.value, 1, base);
+	}
+	else if(e.keyCode == 40) { //down
+		document.activeElement.value = add(document.activeElement.value, -1, base);	
+	}
+}
+
+function add(val, addend, base) { //todo
+	let decimalAns = parseInt(val, base);
+	decimalAns += addend;
+	return decimalAns.toString(base).toUpperCase();
+}
 
 function convert(e, base) {
-	var val = document.getElementById(e.target.id).value;
+	let val = document.getElementById(e.target.id).value;
 
-	var decimalAns = parseInt(val, base);
-	if(isNaN(decimalAns) ) {
+	let decimalAns = parseInt(val, base);
+	if(isNaN(decimalAns) ) { //todo: show error?
 		return;
 	}
 	binary.value = decimalAns.toString(2);
@@ -267,7 +261,6 @@ function convert(e, base) {
 	", Hex: " + decimalAns.toString(16).toUpperCase() + "\n\n" +	
 	document.getElementById("valConsole").value;
 }
-
 
 </script>
 </body>
