@@ -1,5 +1,5 @@
 <img src="logo.svg" width="64px">
-# base-convert
+Base Converter - RGB Studios
 
 a simple number base converter with a reference chart
 
