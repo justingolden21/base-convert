@@ -1,0 +1,274 @@
+
+<!doctype html>
+<html>
+<head>
+<title>Base Converter</title>
+<link rel="shortcut icon" type="image/png" href="logo.png"/>
+
+<meta name="theme-color" content="#ccc">
+<meta name="msapplication-navbutton-color" content="#ccc">
+<meta name="apple-mobile-web-app-status-bar-style" content="#ccc">
+
+
+<meta charset="utf-8">
+<meta name="title=" content="Base Converter">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Contvert numbers between binary, octal, decimal, and hexadecimal">
+<meta name="keywords" content="number, convert, converter, base, binary, octal, decimal, hexadecimal, hex">
+
+<!-- bootstrap, (w/ jquery, fontawesome) and roboto -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+
+<style>
+
+.bg-info {
+	padding: 4px !important;
+}
+textarea {
+	resize: vertical;
+}
+
+::-moz-selection {
+  background: #ccc;
+}
+::selection {
+  background: #ccc;
+}
+
+img {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+}
+
+</style>
+</head>
+<body>
+
+<div class="text-center container">
+	<h3 class="lead"><img id="logo" src="logo.svg" width="36px">Base Converter <small>v.1.0.4</small></h3>
+
+<div class="row">
+<div class="col-sm-6 col-lg-3">
+<input id="binary" class="form-control input-lg text-center" autofocus onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>2</sub><label> Binary</label>
+</div>
+
+<div class="col-sm-6 col-lg-3">
+<input id="octal" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>8</sub><label> Octal</label>
+</div>
+
+<div class="col-sm-6 col-lg-3">
+<input id="decimal" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>10</sub><label> Decimal</label>
+</div>
+
+<div class="col-sm-6 col-lg-3">
+<input id="hex" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>16</sub><label> Hex</label>
+</div>
+
+</div>
+<br>
+<p class="text-center bg-info">Hit <kbd>Enter</kbd> (or <kbd>Tab</kbd>) to calculate other values
+	<br><br>use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to navigate inputs</p>
+
+<hr>
+
+
+<div class="form-group text-center">
+  <label for="valConsole"><button class="btn btn-sm btn-default"><i id="reset" onclick="document.getElementById('valConsole').value='';" title="reset history" class="fas fa-history"></i></button> History</label>
+<textarea id="valConsole" class="form-control text-center" rows="5"></textarea>
+</div>
+<hr>
+
+<div class="container text-center">
+<label>Quick Reference Table</label>
+<table class="table table-hover table-bordered table-condensed">
+<tr>
+<th class="text-center">Decimal (base 10)</th>
+<th class="text-center">Binary (base 2)</th>
+<th class="text-center">Octal (base 8)</th>
+<th class="text-center">Hexadecimal (base 16)</th>
+</tr>
+<tr>
+<td>00</td>
+<td>0000</td>
+<td>00</td>
+<td>0</td>
+</tr>
+<tr>
+<td>01</td>
+<td>0001</td>
+<td>01</td>
+<td>1</td>
+</tr>
+<tr>
+<td>02</td>
+<td>0010</td>
+<td>02</td>
+<td>2</td>
+</tr>
+<tr>
+<td>03</td>
+<td>0011</td>
+<td>03</td>
+<td>3</td>
+</tr>
+<tr>
+<td>04</td>
+<td>0100</td>
+<td>04</td>
+<td>4</td>
+</tr>
+<tr>
+<td>05</td>
+<td>0101</td>
+<td>05</td>
+<td>5</td>
+</tr>
+<tr>
+<td>06</td>
+<td>0110</td>
+<td>06</td>
+<td>6</td>
+</tr>
+<tr>
+<td>07</td>
+<td>0111</td>
+<td>07</td>
+<td>7</td>
+</tr>
+<tr>
+<td>08</td>
+<td>1000</td>
+<td>10</td>
+<td>8</td>
+</tr>
+<tr>
+<td>09</td>
+<td>1001</td>
+<td>11</td>
+<td>9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1010</td>
+<td>12</td>
+<td>A</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1011</td>
+<td>13</td>
+<td>B</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1100</td>
+<td>14</td>
+<td>C</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1101</td>
+<td>15</td>
+<td>D</td>
+</tr>
+<tr>
+<td>14</td>
+<td>1110</td>
+<td>16</td>
+<td>E</td>
+</tr>
+<tr>
+<td>15</td>
+<td>1111</td>
+<td>17</td>
+<td>F</td>
+</tr>
+</table>
+<a href="chart.png" download="chart" title="download chart as image"><button class="btn btn-sm btn-default"><i class="fas fa-download"></i></button> Download chart</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a id="printLink" title="open tab to print chart" style="cursor:pointer;"><button class="btn btn-sm btn-default"><i class="fas fa-print"></i></button> Print chart</a>
+<br><br>
+</div>
+</div>
+<script>
+/*TODO
+maybe: copy and download buttons? night mode?
+work with negative and decimal.
+2^n chart or input. ascii chart and download?
+add, subtract, multiply options?
+tutorial on how to convert
+enter custom length (nible, byte, 4 bytes) and format to that/pad zeros
+enter comma seperated list of items to convert
+chose to and from bases
+*/
+
+function printPage() {
+	console.log("hi");
+	this.print();
+}
+
+window.onload = function() {
+		
+	var binary = document.getElementById("binary");
+	var octal = document.getElementById("octal");
+	var decimal = document.getElementById("decimal");
+	var hex = document.getElementById("hex");
+
+	binary.select();
+	
+	binary.onchange = function(e) {
+		convert(e, 2);
+	}
+	octal.onchange = function(e) {
+		convert(e, 8);
+	}
+	decimal.onchange = function(e) {
+		convert(e, 10);
+	}
+	hex.onchange = function(e) {
+		convert(e, 16);
+	}
+
+	document.getElementById("printLink").onclick = function() {
+		pageToPrint = window.open();
+		pageToPrint.document.write("<img src='chart.png' onload='print();'>");
+		
+
+	}
+}
+
+
+
+function convert(e, base) {
+	var val = document.getElementById(e.target.id).value;
+
+	var decimalAns = parseInt(val, base);
+	if(isNaN(decimalAns) ) {
+		return;
+	}
+	binary.value = decimalAns.toString(2);
+	octal.value = decimalAns.toString(8);
+	decimal.value = decimalAns;
+	hex.value = decimalAns.toString(16).toUpperCase();
+	
+	document.getElementById("valConsole").value =
+	"Bin: " + decimalAns.toString(2) +
+	", Oct: " + decimalAns.toString(8) +
+	", Dec: " + decimalAns +
+	", Hex: " + decimalAns.toString(16).toUpperCase() + "\n\n" +	
+	document.getElementById("valConsole").value;
+}
+
+
+</script>
+</body>
+</html>
