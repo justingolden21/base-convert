@@ -7,6 +7,8 @@ a simple number base converter with a reference chart
 
 <hr>
 
+1.0.5
+
 by Justin Golden for RGB Studios
 
 justingolden21.github.io
