@@ -2,10 +2,12 @@ textarea {
 	resize: vertical;
 }
 ::-moz-selection {
-  background: #ccc;
+  background: #339;
+  color: #fff;
 }
 ::selection {
-  background: #ccc;
+  background: #339;
+  color: #fff;
 }
 img {
   -moz-user-select: none;
