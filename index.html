@@ -2,542 +2,305 @@
 <!doctype html>
 <html>
 <head>
-<title>Base Converter</title>
-<link rel="shortcut icon" type="image/png" href="logo.png"/>
+	<title>Base Converter</title>
+	<link rel="shortcut icon" type="image/png" href="logo.png"/>
 
-<meta name="theme-color" content="#339">
-<meta name="msapplication-navbutton-color" content="#339">
-<meta name="apple-mobile-web-app-status-bar-style" content="#339">
+	<meta name="theme-color" content="#339">
+	<meta name="msapplication-navbutton-color" content="#339">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#339">
+
+	<meta charset="utf-8">
+	<meta name="title=" content="Base Converter">
+	<meta name="robots" content="index, follow">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Contvert numbers between binary, octal, decimal, and hexadecimal">
+	<meta name="keywords" content="number, convert, converter, base, binary, octal, decimal, hexadecimal, hex">
 
 
-<meta charset="utf-8">
-<meta name="title=" content="Base Converter">
-<meta name="robots" content="index, follow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Contvert numbers between binary, octal, decimal, and hexadecimal">
-<meta name="keywords" content="number, convert, converter, base, binary, octal, decimal, hexadecimal, hex">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>   -->
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>   -->
-
-<link href="styles.css" rel="stylesheet" type="text/css">
+	<link href="styles.css" rel="stylesheet" type="text/css">
+	<script src="scripts.js" "></script>
 
 </head>
 <body>
 
-<div class="text-center container">
-<h3 class="lead"><img id="logo" src="logo.svg" width="36px">Base Converter <small>v.1.0.11</small></h3>
+	<div class="text-center container">
+		<h3 class="lead"><img id="logo" src="logo.svg" width="36px">Base Converter <small>v.1.0.11</small></h3>
 
-
-<div class="row">
-<div class="col-sm-6 col-lg-3">
-<input id="binary" class="form-control input-lg text-center" autofocus onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>2 </sub><label> Binary</label>
-</div>
-
-<div class="col-sm-6 col-lg-3">
-<input id="octal" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>8 </sub><label>Octal</label>
-</div>
-
-<div class="col-sm-6 col-lg-3">
-<input id="decimal" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>10 </sub><label> Decimal</label>
-</div>
-
-<div class="col-sm-6 col-lg-3">
-<input id="hex" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>16 </sub><label> Hex</label>
-</div>
-
-</div>
-
-
-<div class="alert alert-info alert-dismissible">
-  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-<p class="text-center">Hit <kbd>Enter</kbd> (or <kbd>Tab</kbd>) to calculate other values
-	<br><br>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to navigate inputs
-	<br><br>Use the <kbd><i class="fas fa-sort-up"></i></kbd> up and <kbd><i class="fas fa-sort-down"></i></kbd> down arrow keys to increment or decrement your input</p>
-</div>
-<hr>
-
-<div class="form-group text-center">
-  <label for="valConsole"><button class="btn btn-sm btn-default"><i id="reset" title="reset history" class="fas fa-history"></i></button> History</label>
-<textarea id="valConsole" class="form-control text-center" rows="5"></textarea>
-<br>
-<a id="downloadLink" style="cursor:pointer;" title="download history as text file"><button class="btn btn-sm btn-default"><i class="fas fa-download"></i></button> Download history</a>
-
-</div>
-<hr>
-
-
-<label>Quick Reference Table</label>
-<table class="table table-hover table-bordered table-condensed">
-<tr>
-<th class="text-center">Decimal (base 10)</th>
-<th class="text-center">Binary (base 2)</th>
-<th class="text-center">Octal (base 8)</th>
-<th class="text-center">Hexadecimal (base 16)</th>
-</tr>
-<tr>
-<td>00</td>
-<td>0000</td>
-<td>00</td>
-<td>0</td>
-</tr>
-<tr>
-<td>01</td>
-<td>0001</td>
-<td>01</td>
-<td>1</td>
-</tr>
-<tr>
-<td>02</td>
-<td>0010</td>
-<td>02</td>
-<td>2</td>
-</tr>
-<tr>
-<td>03</td>
-<td>0011</td>
-<td>03</td>
-<td>3</td>
-</tr>
-<tr>
-<td>04</td>
-<td>0100</td>
-<td>04</td>
-<td>4</td>
-</tr>
-<tr>
-<td>05</td>
-<td>0101</td>
-<td>05</td>
-<td>5</td>
-</tr>
-<tr>
-<td>06</td>
-<td>0110</td>
-<td>06</td>
-<td>6</td>
-</tr>
-<tr>
-<td>07</td>
-<td>0111</td>
-<td>07</td>
-<td>7</td>
-</tr>
-<tr>
-<td>08</td>
-<td>1000</td>
-<td>10</td>
-<td>8</td>
-</tr>
-<tr>
-<td>09</td>
-<td>1001</td>
-<td>11</td>
-<td>9</td>
-</tr>
-<tr>
-<td>10</td>
-<td>1010</td>
-<td>12</td>
-<td>A</td>
-</tr>
-<tr>
-<td>11</td>
-<td>1011</td>
-<td>13</td>
-<td>B</td>
-</tr>
-<tr>
-<td>12</td>
-<td>1100</td>
-<td>14</td>
-<td>C</td>
-</tr>
-<tr>
-<td>13</td>
-<td>1101</td>
-<td>15</td>
-<td>D</td>
-</tr>
-<tr>
-<td>14</td>
-<td>1110</td>
-<td>16</td>
-<td>E</td>
-</tr>
-<tr>
-<td>15</td>
-<td>1111</td>
-<td>17</td>
-<td>F</td>
-</tr>
-</table>
-<a href="chart.png" download="chart" title="download chart as image"><button class="btn btn-sm btn-default"><i class="fas fa-download"></i></button> Download chart</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-
-<a id="printLink" title="open tab to print chart" style="cursor:pointer;"><button class="btn btn-sm btn-default"><i class="fas fa-print"></i></button> Print chart</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-<hr>
-<button title="Arithmetic and custom bases" type="button" class="btn btn-default" data-toggle="modal" data-target="#moreModal"><i class="fas fa-calculator"></i> Arithmetic</button>
-<button title="Learn about bases" type="button" class="btn btn-default" data-toggle="modal" data-target="#learnModal"><i class="fas fa-lightbulb"></i> Learn</button>
-
-<button title="toggle fullscreen" onclick="toggleFullscreen()" type="button" class="btn btn-default"><i class="fas fa-arrows-alt"></i> Toggle Fullscreen</button>
-
-<br><br>
-
-<div id="moreModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fas fa-calculator"></i> Arithmetic</h4>
-      </div>
-      <div class="modal-body">
-
-		<div class="checkbox">
-			<label><input id="baseCheckbox" checked type="checkbox">Same Bases</label>
-		</div>
-
-		<label id="baseLabel">Base:<input id="baseInput" class="form-control" value="10" type="text"></label>
-
-		<div class="row" id="basesDiv">
-			<div class="col-sm-4">
-				<label>Input 1 Base:</label><input id="baseInput1" class="form-control" value="10" type="text">
+		<div class="row">
+			<div class="col-sm-6 col-lg-3">
+				<input id="binary" class="form-control input-lg text-center" autofocus onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>2 </sub><label> Binary</label>
 			</div>
-			<div class="col-sm-4">
-				<label>Input 2 Base:</label><input id="baseInput2" class="form-control" value="10" type="text">
+			<div class="col-sm-6 col-lg-3">
+				<input id="octal" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>8 </sub><label>Octal</label>
 			</div>
-			<div class="col-sm-4">
-				<label>Output Base:</label><input id="baseInput3" class="form-control" value="10" type="text">
+			<div class="col-sm-6 col-lg-3">
+				<input id="decimal" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>10 </sub><label> Decimal</label>
+			</div>
+			<div class="col-sm-6 col-lg-3">
+				<input id="hex" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>16 </sub><label> Hex</label>
 			</div>
 		</div>
-		
-		<hr>
 
-		<input id="val1Input" class="form-control" value="0" type="text">
-		<select class="form-control" id="operationInput">
-		<option>+</option>
-		<option>-</option>
-		<option>&times;</option>
-		<option>/</option>
-		</select>
-		<input id="val2Input" class="form-control" value="0" type="text">
-		<br>
-		<input disabled id="calcOutput" value="" type="text" class="form-control" style="cursor:text;">
+		<div class="alert alert-info alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<p class="text-center">Hit <kbd>Enter</kbd> (or <kbd>Tab</kbd>) to calculate other values
+				<br><br>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to navigate inputs
+				<br><br>Use the <kbd><i class="fas fa-sort-up"></i></kbd> up and <kbd><i class="fas fa-sort-down"></i></kbd> down arrow keys to increment or decrement your input</p>
+			</div>
+			<hr>
+			<div class="form-group text-center">
+				<label for="valConsole"><button class="btn btn-sm btn-default"><i id="reset" title="reset history" class="fas fa-history"></i></button> History</label>
+				<textarea id="valConsole" class="form-control text-center" rows="5"></textarea>
+				<br>
+				<a id="downloadLink" style="cursor:pointer;" title="download history as text file"><button class="btn btn-sm btn-default"><i class="fas fa-download"></i></button> Download history</a>
+			</div>
+			<hr>
 
-      </div>
-    </div>
+			<label>Quick Reference Table</label>
+			<table class="table table-hover table-bordered table-condensed">
+				<tr>
+					<th class="text-center">Decimal (base 10)</th>
+					<th class="text-center">Binary (base 2)</th>
+					<th class="text-center">Octal (base 8)</th>
+					<th class="text-center">Hexadecimal (base 16)</th>
+				</tr>
+				<tr>
+					<td>00</td>
+					<td>0000</td>
+					<td>00</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>01</td>
+					<td>0001</td>
+					<td>01</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>02</td>
+					<td>0010</td>
+					<td>02</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>03</td>
+					<td>0011</td>
+					<td>03</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>04</td>
+					<td>0100</td>
+					<td>04</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>05</td>
+					<td>0101</td>
+					<td>05</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>06</td>
+					<td>0110</td>
+					<td>06</td>
+					<td>6</td>
+				</tr>
+				<tr>
+					<td>07</td>
+					<td>0111</td>
+					<td>07</td>
+					<td>7</td>
+				</tr>
+				<tr>
+					<td>08</td>
+					<td>1000</td>
+					<td>10</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>09</td>
+					<td>1001</td>
+					<td>11</td>
+					<td>9</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>1010</td>
+					<td>12</td>
+					<td>A</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>1011</td>
+					<td>13</td>
+					<td>B</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>1100</td>
+					<td>14</td>
+					<td>C</td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>1101</td>
+					<td>15</td>
+					<td>D</td>
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>1110</td>
+					<td>16</td>
+					<td>E</td>
+				</tr>
+				<tr>
+					<td>15</td>
+					<td>1111</td>
+					<td>17</td>
+					<td>F</td>
+				</tr>
+			</table>
+			<a href="chart.png" download="chart" title="download chart as image"><button class="btn btn-sm btn-default"><i class="fas fa-download"></i></button> Download chart</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;
 
-  </div>
-</div>
+			<a id="printLink" title="open tab to print chart" style="cursor:pointer;"><button class="btn btn-sm btn-default"><i class="fas fa-print"></i></button> Print chart</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;
 
+			<hr>
+			<button title="Arithmetic and custom bases" type="button" class="btn btn-default" data-toggle="modal" data-target="#moreModal"><i class="fas fa-calculator"></i> Arithmetic</button>
+			<button title="Learn about bases" type="button" class="btn btn-default" data-toggle="modal" data-target="#learnModal"><i class="fas fa-lightbulb"></i> Learn</button>
+			<button title="toggle fullscreen" onclick="toggleFullscreen()" type="button" class="btn btn-default"><i class="fas fa-arrows-alt"></i> Toggle Fullscreen</button>
+			<br><br>
 
-<div id="learnModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fas fa-lightbulb"></i> Learn</h4>
-      </div>
-      <div class="modal-body">
-      	<p class="text-center">
+			<div id="moreModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"><i class="fas fa-calculator"></i> Arithmetic</h4>
+						</div>
+						<div class="modal-body">
 
-<b>What are number bases?</b><br>
-A base is a counting system. Base 10, or decimal
-uses the digits 0,1,2,3,4,5,6,7,8, and 9.<br>
-Each number further left represents a power of 10.<br>
-For example, 987 is 9 100s, 8 10s, and 7 1s<br>
-or 9*10^2 + 8*10^1 + 7*10^0<br>
-<br>
-If we count in hexidecimal, which is base 16<br>
-("hex" meaning 6 and "decimal" meaning 10),<br>
-we have digits 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e, and f.<br>
-Notice that 10 is a, 11 is b... and we go up to 15 (f), which is 16-1,<br>
-just like in base 10 we go up to 9, which is 10-1.<br>
-<br>
-For example, for the number 3db in hex,<br>
-instead of the 1s, 10s, and 100s places like decimal,<br>
-we have the 1s, 16s, and 256s places, for powers of 16 instead of powers of 10.<br>
-So 3db is 3*16^2 + d*16^1 + b*16^0 where d is 13 and b is 11.<br>
-So we have 3*256 + 13*16 + 11*1 = 768 + 208 + 11 = 987.<br>
-So 3db in hex is 987 in decimal.<br>
-<br>
-Similarly, we can convert decimal back to base 16:<br>
-987/16 is 61 remainder 11.<br>
-61/16 is 3 remainder 13.<br>
-and 3 doesn't go into 16, so we finish with remainder 3.<br>
-We take the remainders and go back upwards:
-so we have 3, then 13, then 11, which is 3db<br>
-<br>
-If we count in binary, which is base 2 ("bi" meaning 2) we have digits 0 and 1.<br>
-The prefix "bi" is used in "bicycle", "bipetal", and "bilingual".<br>
-In octal (base 8, "oct" meaning 8) we have digits 0,1,2,3,4,5,6, and 7.<br>
-The prefix "oct" is used in "octopus" and "octagon".<br>
-Base 2,8, and 16 are often used in programming because they're all powers of 2,<br>
-data is stored in binary, and conversion between them is easy.<br>
-We probably count in decimal because we have ten fingers.<br><br>
-<br>
-Converting between base 2, 8, and 16 is easy.<br>
-You can just look at the table below<br>
-and substitute every 4 binary digits for a hex digit, or 3 for an oct digit.<br>
-If the amount isn't divisable by 3 or 4 (whichever you need), pad the beginning with 0s.<br>
-To convert from hex or oct, do the opposite.<br>
-For example:<br>
-3db in hex: 3 is 0011, d is 1101 and b is 1011, so 3db is 001111011011<br>
-getting rid of the leading 0s we have 1111011011<br>
-converting 1111011011 back, we add 0s to make the number of digits divisable by 4<br>
-this is because 2^4 is 16.<br>
-001111011011 split into groups of 4 is 0011 1101 1011 which in the table is 3, d, and b<br>
-<br>
-Misc. Facts:<br>
-Sexigesimal (base 60) was used by ancient sumerians.<br>
-That is why there are 60 seconds in a minute and 360 degrees in a circle.<br>
-Sometimes bases above 10 use lowercase letters, but most of the time it's capital.<br>
-Bases above 36 often use both capital and lowercase.<br>
-Sometimes base 26 starts at A (where Z is 0).<br>
-We often use hexadecimal to abbreviate RGB colors because each color is between 0-255, <br>
-so each color is 2 hexidecimal digits.<br>
-Sometimes people call hexidecimal "hex".<br>
-Most of the time you can assume "hex" refers to base 16 not base 6.<br>
-Binary is sometimes called "bin".<br>
-RGB hexidecimal codes often start with a "#",<br>
-and sometimes are only 3 digits meaing they store only the most significant digit of each color.<br>
+							<div class="checkbox">
+								<label><input id="baseCheckbox" checked type="checkbox">Same Bases</label>
+							</div>
 
+							<label id="baseLabel">Base:<input id="baseInput" class="form-control" value="10" type="text"></label>
 
+							<div class="row" id="basesDiv">
+								<div class="col-sm-4">
+									<label>Input 1 Base:</label><input id="baseInput1" class="form-control" value="10" type="text">
+								</div>
+								<div class="col-sm-4">
+									<label>Input 2 Base:</label><input id="baseInput2" class="form-control" value="10" type="text">
+								</div>
+								<div class="col-sm-4">
+									<label>Output Base:</label><input id="baseInput3" class="form-control" value="10" type="text">
+								</div>
+							</div>
 
+							<hr>
 
+							<input id="val1Input" class="form-control" value="0" type="text">
+							<select class="form-control" id="operationInput">
+								<option>+</option>
+								<option>-</option>
+								<option>&times;</option>
+								<option>/</option>
+							</select>
+							<input id="val2Input" class="form-control" value="0" type="text">
+							<br>
+							<input disabled id="calcOutput" value="" type="text" class="form-control" style="cursor:text;">
 
-      	</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-
-      </div>
-  	</div>
-  </div>
-</div>
-
-
-</div>
-<script>
-
-/* RECENT CHANGES
-arrow keys up and down to change inputs
-download history
-highlight row of table if applicable
-added custom base and arithmetic
-
-TODO
-make decimal work (parseFloat doesn't take a radix as a parameter)
-
-
-
-
-MAYBE TODO
-enter custom length (nible, byte, 4 bytes) and format to that/pad zeros
-signed or unsigned?
-convert to ascii characters?
-maybe: copy and night mode button?
-tutorial on how to convert
-enter comma seperated list of items to convert
-seperate app: calculate 2^n chart, ascii conversion chart, link here, and byte/kb/mb/gb converter
-*/
-
-let baseInput, baseInput1, baseInput2, baseInput3, val1Input, val2Input, operationInput, calcOutput, valConsole;
-
-window.onload = function() {
-		
-	let binary = document.getElementById("binary");
-	let octal = document.getElementById("octal");
-	let decimal = document.getElementById("decimal");
-	let hex = document.getElementById("hex");
-	valConsole = document.getElementById("valConsole");
-
-	binary.select();
-	
-	binary.onchange = function(e) {
-		convert(e, 2);
-	}
-	octal.onchange = function(e) {
-		convert(e, 8);
-	}
-	decimal.onchange = function(e) {
-		convert(e, 10);
-	}
-	hex.onchange = function(e) {
-		convert(e, 16);
-	}
-
-	document.getElementById("printLink").onclick = function() {
-		let pageToPrint = window.open();
-		pageToPrint.document.write("<title>Reference Table | Base Converter</title><img src='chart.png' onload='print();'>");
-	}
-
-	document.getElementById("reset").onclick = function() {
-		valConsole.value = "";
-	}
-
-	document.getElementById("downloadLink").onclick = function() {
-		let consoleValue = valConsole.value.split("\n");
-		let text = [];
-		for(item in consoleValue) {
-			text.push(consoleValue[item] + "\r\n");
-		}
-		let data = new Blob(text, {type: "text/plain"});
-		let textFile = window.URL.createObjectURL(data);
-		document.getElementById("downloadLink").download = "History- Base Converter";
-		document.getElementById("downloadLink").href = textFile;
-	}
-
-	let baseCheckbox = document.getElementById("baseCheckbox");
-
-	baseCheckbox.onchange = function() {
-		if(this.checked) {
-			document.getElementById("basesDiv").style.display = "none";
-			document.getElementById("baseLabel").style.display = "";
-		}
-		else {
-			document.getElementById("basesDiv").style.display = "";
-			document.getElementById("baseLabel").style.display = "none";
-		}
-	}
-
-
-	baseInput = document.getElementById("baseInput");
-	baseInput1 = document.getElementById("baseInput1");
-	baseInput2 = document.getElementById("baseInput2");
-	baseInput3 = document.getElementById("baseInput3");
-	val1Input = document.getElementById("val1Input");
-	val2Input = document.getElementById("val2Input");
-	operationInput = document.getElementById("operationInput");
-	calcOutput = document.getElementById("calcOutput");
-
-	baseInput.onchange = baseInput1.onchange = baseInput2.onchange = baseInput3.onchange = val1Input.onchange = val2Input.onchange = operationInput.onchange = handleOperation;
-
-	document.getElementById("basesDiv").style.display = "none";
-
-}
-
-let baseNames = {"binary":2, "octal":8, "decimal":10, "hex":16}
-
-window.onkeyup = function(e) {
-	if(e.keyCode != 38 && e.keyCode != 40)
-		return;
-	if(document.activeElement.nodeName != "INPUT")
-		return;
-
-	let base = baseNames[document.activeElement.id];
-	if(e.keyCode == 38) { //up
-		document.activeElement.value = add(document.activeElement.value, 1, base);
-		convert(e, base);
-	}
-	else if(e.keyCode == 40) { //down
-		document.activeElement.value = add(document.activeElement.value, -1, base);
-		convert(e, base);
-	}
-}
-
-function add(val, addend, base) {
-	let decimalAns = parseInt(val, base);
-	decimalAns += addend;
-	return decimalAns.toString(base).toUpperCase();
-}
-
-function handleOperation() {
-	calcOutput.disabled = "false";
-	let ans;
-	try {
-		if(baseCheckbox.checked) {
-			ans = doOperation(val1Input.value, baseInput.value, val2Input.value, baseInput.value, operationInput.value, baseInput.value);
-		}
-		else {
-			ans = doOperation(val1Input.value, baseInput1.value, val2Input.value, baseInput2.value, operationInput.value, baseInput3.value);
-		}
-		calcOutput.value = ans;
-	} catch(err) { //todo: handle error more specifically ie. invalid base or invalid value
-		calcOutput.value = "Error - Invalid Inputs";
-	}
-	calcOutput.disabled = "true";
-}
-
-function doOperation(val1, base1, val2, base2, operation, answerBase) {
-	let decimalVal1 = parseInt(val1, base1);
-	decimalVal2 = parseInt(val2, base2);
-	let decimalAns;
-	if(operation == "+")
-		decimalAns = decimalVal1 + decimalVal2;
-	else if(operation == "-")
-		decimalAns = decimalVal1 - decimalVal2;
-	else if(operation == "/")
-		decimalAns = decimalVal1 / decimalVal2;
-	else
-		decimalAns = decimalVal1 * decimalVal2;
-
-	return decimalAns.toString(answerBase).toUpperCase();
-}
-
-
-
-function convert(e, base) {
-	let val = document.getElementById(e.target.id).value;
-
-	let decimalAns = parseInt(val, base);
-	if(isNaN(decimalAns) ) { //todo: show error?
-		return;
-	}
-	binary.value = decimalAns.toString(2);
-	octal.value = decimalAns.toString(8);
-	decimal.value = decimalAns;
-	hex.value = decimalAns.toString(16).toUpperCase();
-	
-	valConsole.value =
-	"Bin: " + decimalAns.toString(2) +
-	", Oct: " + decimalAns.toString(8) +
-	", Dec: " + decimalAns +
-	", Hex: " + decimalAns.toString(16).toUpperCase() + "\n\n" +	
-	valConsole.value;
-
-	//unhighlight row
-	let trs = document.getElementsByTagName("tr");
-	for(let i=0; i<trs.length; i++) {
-		trs[i].classList.remove("bg-info");
-	}
-	//highlight row if applicable
-	if(decimalAns < 16 && decimalAns >= 0) {
-		document.getElementsByTagName("tr")[decimalAns+1].classList.add("bg-info");
-	}
-}
-
-
-//https://stackoverflow.com/questions/3900701/onclick-go-full-screen?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-function toggleFullscreen() {
-  if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
-   (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-    if (document.documentElement.requestFullScreen) {  
-      document.documentElement.requestFullScreen();  
-    } else if (document.documentElement.mozRequestFullScreen) {  
-      document.documentElement.mozRequestFullScreen();  
-    } else if (document.documentElement.webkitRequestFullScreen) {  
-      document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
-    }  
-  } else {  
-    if (document.cancelFullScreen) {  
-      document.cancelFullScreen();  
-    } else if (document.mozCancelFullScreen) {  
-      document.mozCancelFullScreen();  
-    } else if (document.webkitCancelFullScreen) {  
-      document.webkitCancelFullScreen();  
-    }  
-  }  
-}
-
-</script>
+			<div id="learnModal" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"><i class="fas fa-lightbulb"></i> Learn</h4>
+						</div>
+						<div class="modal-body">
+							<p class="text-center">
+								<b>What are number bases?</b><br>
+								A base is a counting system. Base 10, or decimal
+								uses the digits 0,1,2,3,4,5,6,7,8, and 9.<br>
+								Each number further left represents a power of 10.<br>
+								For example, 987 is 9 100s, 8 10s, and 7 1s<br>
+								or 9*10^2 + 8*10^1 + 7*10^0<br>
+								<br>
+								If we count in hexidecimal, which is base 16<br>
+								("hex" meaning 6 and "decimal" meaning 10),<br>
+								we have digits 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e, and f.<br>
+								Notice that 10 is a, 11 is b... and we go up to 15 (f), which is 16-1,<br>
+								just like in base 10 we go up to 9, which is 10-1.<br>
+								<br>
+								For example, for the number 3db in hex,<br>
+								instead of the 1s, 10s, and 100s places like decimal,<br>
+								we have the 1s, 16s, and 256s places, for powers of 16 instead of powers of 10.<br>
+								So 3db is 3*16^2 + d*16^1 + b*16^0 where d is 13 and b is 11.<br>
+								So we have 3*256 + 13*16 + 11*1 = 768 + 208 + 11 = 987.<br>
+								So 3db in hex is 987 in decimal.<br>
+								<br>
+								Similarly, we can convert decimal back to base 16:<br>
+								987/16 is 61 remainder 11.<br>
+								61/16 is 3 remainder 13.<br>
+								and 3 doesn't go into 16, so we finish with remainder 3.<br>
+								We take the remainders and go back upwards:
+								so we have 3, then 13, then 11, which is 3db<br>
+								<br>
+								If we count in binary, which is base 2 ("bi" meaning 2) we have digits 0 and 1.<br>
+								The prefix "bi" is used in "bicycle", "bipetal", and "bilingual".<br>
+								In octal (base 8, "oct" meaning 8) we have digits 0,1,2,3,4,5,6, and 7.<br>
+								The prefix "oct" is used in "octopus" and "octagon".<br>
+								Base 2,8, and 16 are often used in programming because they're all powers of 2,<br>
+								data is stored in binary, and conversion between them is easy.<br>
+								We probably count in decimal because we have ten fingers.<br><br>
+								<br>
+								Converting between base 2, 8, and 16 is easy.<br>
+								You can just look at the table below<br>
+								and substitute every 4 binary digits for a hex digit, or 3 for an oct digit.<br>
+								If the amount isn't divisable by 3 or 4 (whichever you need), pad the beginning with 0s.<br>
+								To convert from hex or oct, do the opposite.<br>
+								For example:<br>
+								3db in hex: 3 is 0011, d is 1101 and b is 1011, so 3db is 001111011011<br>
+								getting rid of the leading 0s we have 1111011011<br>
+								converting 1111011011 back, we add 0s to make the number of digits divisable by 4<br>
+								this is because 2^4 is 16.<br>
+								001111011011 split into groups of 4 is 0011 1101 1011 which in the table is 3, d, and b<br>
+								<br>
+								Misc. Facts:<br>
+								Sexigesimal (base 60) was used by ancient sumerians.<br>
+								That is why there are 60 seconds in a minute and 360 degrees in a circle.<br>
+								Sometimes bases above 10 use lowercase letters, but most of the time it's capital.<br>
+								Bases above 36 often use both capital and lowercase.<br>
+								Sometimes base 26 starts at A (where Z is 0).<br>
+								We often use hexadecimal to abbreviate RGB colors because each color is between 0-255, <br>
+								so each color is 2 hexidecimal digits.<br>
+								Sometimes people call hexidecimal "hex".<br>
+								Most of the time you can assume "hex" refers to base 16 not base 6.<br>
+								Binary is sometimes called "bin".<br>
+								RGB hexidecimal codes often start with a "#",<br>
+								and sometimes are only 3 digits meaing they store only the most significant digit of each color.<br>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
 </body>
 </html>
