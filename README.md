@@ -1,18 +1,21 @@
 <img src="logo.svg" width="64px">
-Base Converter - RGB Studios
 
-a simple number base converter with a reference chart
+Base Converter &mdash; RGB Studios
 
-<a href="http://rgbstudios.org/base-convert">rgbstudios.org/base-convert</a>
+**A simple number base converter with a reference chart**
+
+<img src="calculator.svg" width="300px">
+
+http://rgbstudios.org/base-convert
 
 <img src="chart.png">
 
 <hr>
 
-1.0.11
+Calculator image from https://undraw.co
 
-by Justin Golden for RGB Studios
+Contact: [contact@rgbstudios.org](mailto:contact@rgbstudios.org)
 
-justingolden21.github.io
+Version 1.0.11
 
-rgbstudios.org
+by [Justin Golden](https://justingolden21.github.io) for [RGB Studios](https://rgbstudios.org)

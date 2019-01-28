@@ -2,19 +2,19 @@ textarea {
 	resize: vertical;
 }
 ::-moz-selection {
-  background: #339;
-  color: #fff;
+	background: #339;
+	color: #fff;
 }
 ::selection {
-  background: #339;
-  color: #fff;
+	background: #339;
+	color: #fff;
 }
 img {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-drag: none;
-  user-drag: none;
-  -webkit-touch-callout: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
+	user-drag: none;
+	-webkit-touch-callout: none;
 }
