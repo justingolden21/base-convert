@@ -45,7 +45,7 @@ window.onload = function() {
 		convert(e, 16);
 	}
 
-	document.getElementById("printLink").onclick = function() {
+	document.getElementById("printButton").onclick = function() {
 		let pageToPrint = window.open();
 		pageToPrint.document.write("<title>Reference Table | Base Converter</title><img src='chart.png' onload='print();'>");
 	}
@@ -54,7 +54,7 @@ window.onload = function() {
 		valConsole.value = "";
 	}
 
-	document.getElementById("downloadLink").onclick = function() {
+	document.getElementById("downloadHistoryButton").onclick = function() {
 		let consoleValue = valConsole.value.split("\n");
 		let text = [];
 		for(item in consoleValue) {
@@ -62,8 +62,14 @@ window.onload = function() {
 		}
 		let data = new Blob(text, {type: "text/plain"});
 		let textFile = window.URL.createObjectURL(data);
-		document.getElementById("downloadLink").download = "History- Base Converter";
-		document.getElementById("downloadLink").href = textFile;
+
+
+		let link = document.createElement('a');
+		link.href = textFile;
+		link.download = 'History- Base Converter.txt';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
 	}
 
 	let baseCheckbox = document.getElementById("baseCheckbox");
@@ -92,6 +98,16 @@ window.onload = function() {
 	baseInput.onchange = baseInput1.onchange = baseInput2.onchange = baseInput3.onchange = val1Input.onchange = val2Input.onchange = operationInput.onchange = handleOperation;
 
 	document.getElementById("basesDiv").style.display = "none";
+
+
+	$('#downloadChartButton').click(function() {
+		let link = document.createElement('a');
+		link.href = 'chart.png';
+		link.download = 'base chart.png';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	});
 
 }
 

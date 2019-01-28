@@ -61,7 +61,7 @@
 				<label for="valConsole"><button class="btn btn-sm btn-default"><i id="reset" title="reset history" class="fas fa-history"></i></button> History</label>
 				<textarea id="valConsole" class="form-control text-center" rows="5"></textarea>
 				<br>
-				<a id="downloadLink" style="cursor:pointer;" title="download history as text file"><button class="btn btn-sm btn-default"><i class="fas fa-download"></i></button> Download history</a>
+				<button id="downloadHistoryButton" class="btn btn-sm btn-default" title="download history as text file"><i class="fas fa-download"></i> Download history</button>
 			</div>
 			<hr>
 
@@ -170,17 +170,17 @@
 					<td>F</td>
 				</tr>
 			</table>
-			<a href="chart.png" download="chart" title="download chart as image"><button class="btn btn-sm btn-default"><i class="fas fa-download"></i></button> Download chart</a>
+			<button id="downloadChartButton" class="btn btn-sm btn-default" title="download chart as image"><i class="fas fa-download"></i> Download chart</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 
-			<a id="printLink" title="open tab to print chart" style="cursor:pointer;"><button class="btn btn-sm btn-default"><i class="fas fa-print"></i></button> Print chart</a>
-			&nbsp;&nbsp;&nbsp;&nbsp;
+			<button id="printButton" class="btn btn-sm btn-default" title="open tab to print chart"><i class="fas fa-print"></i> Print chart</button>
 
 			<hr>
 			<button title="Arithmetic and custom bases" type="button" class="btn btn-default" data-toggle="modal" data-target="#moreModal"><i class="fas fa-calculator"></i> Arithmetic</button>
 			<button title="Learn about bases" type="button" class="btn btn-default" data-toggle="modal" data-target="#learnModal"><i class="fas fa-lightbulb"></i> Learn</button>
 			<button title="toggle fullscreen" onclick="toggleFullscreen()" type="button" class="btn btn-default"><i class="fas fa-arrows-alt"></i> Toggle Fullscreen</button>
 			<br><br>
+			<p>Read about this project <a href="https://github.com/rgbstudios/base-convert/blob/master/README.md" target="_blank">here</a></p>
 
 			<div id="moreModal" class="modal fade" role="dialog">
 				<div class="modal-dialog">
