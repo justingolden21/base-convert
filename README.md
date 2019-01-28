@@ -40,6 +40,6 @@ Calculator and gear images from https://undraw.co
 
 Contact: [contact@rgbstudios.org](mailto:contact@rgbstudios.org)
 
-Version 1.0.11
+Version 1.1.0
 
 by [Justin Golden](https://justingolden21.github.io) for [RGB Studios](https://rgbstudios.org)

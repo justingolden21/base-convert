@@ -9,7 +9,7 @@ textarea {
 	background: #339;
 	color: #fff;
 }
-img {
+img, br, a.close {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
@@ -21,4 +21,10 @@ img {
 input:not([type=checkbox]):focus {
 	border: 2px solid #99f !important;
 	box-shadow: 3px 2px 0px #339 !important;
+}
+
+@media screen and (max-width: 768px) {
+	.alert {
+		display: none;
+	}
 }
