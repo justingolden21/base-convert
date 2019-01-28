@@ -1,16 +1,38 @@
 <img src="logo.svg" width="64px">
 
-Base Converter &mdash; RGB Studios
+[Base Converter](http://rgbstudios.org/base-convert) &mdash; RGB Studios
 
 **A simple number base converter with a reference chart**
 
-<img src="calculator.svg" width="300px">
-
 http://rgbstudios.org/base-convert
+
+<img src="calculator.svg" width="450px">
+
+### Features
+
+Convert between binary(2), octal(8), decimal(10) and hex(16).
+
+View, download, or print our quick reference chart:
 
 <img src="chart.png">
 
-<hr>
+If applicable, the corresponding row in the chart will be highlighted.
+
+Click "Arithmetic" for operations such as addition, subtraction, multiplication, and division, and even enter your inputs in two different bases and convert to a third.
+
+View your conversion history, download it, or clear it.
+
+Click the fullscreen button to go fullscreen, great for a classroom setting.
+
+### Keyboard Shortcuts
+
+Hit <kbd>Enter</kbd> (or <kbd>Tab</kbd>) to calculate other values
+
+Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to navigate inputs
+
+Use the <kbd>&uarr;</i></kbd> <kbd>&darr;</i></kbd> arrow keys to increment or decrement your input
+
+### About
 
 Calculator image from https://undraw.co
 
