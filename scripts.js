@@ -102,6 +102,8 @@ window.onkeyup = function(e) {
 		document.activeElement.value = add(document.activeElement.value, -1, base);
 		convert(e, base, isSimple);
 	}
+	if(document.activeElement.value == 'NAN')
+		document.activeElement.value = '0';
 }
 
 function add(val, addend, base) {
@@ -125,7 +127,7 @@ function handleOperation() {
 			showError('Error - Invalid Inputs');
 		} else {
 			$('#calcOutput').val(ans);
-			$('#errorP').html('');		
+			$('#complexError').html('');		
 		}
 	} catch(err) {
 		showError('Error - Invalid Inputs');
@@ -135,7 +137,7 @@ function handleOperation() {
 
 function showError(text) {
 	$('#calcOutput').val('');
-	$('#errorP').html(text);
+	$('#complexError').html(text);
 }
 
 function doOperation(val1, base1, val2, base2, operation, answerBase) {
@@ -155,12 +157,17 @@ function doOperation(val1, base1, val2, base2, operation, answerBase) {
 }
 
 function convert(e, base, isSimple) {
-	let val = $('#' + e.target.id).val();
+	let val = $('#' + e.target.id).val() || '0';
+	console.log(val);
 
 	let decimalAns = parseInt(val, base);
-	if(isNaN(decimalAns) ) { //todo: show error?
+	if(isNaN(decimalAns) ) {
+		$('#simpleError').html('Invalid input');
+		// e.target.value = '0';
 		return;
 	}
+
+	$('#simpleError').html('');
 
 	$('#binary').val(decimalAns.toString(2) );
 	$('#octal').val(decimalAns.toString(8) );

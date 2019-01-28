@@ -8,7 +8,6 @@ fixed many things about arithmetic modal
 fixed button and focused input aesthetic
 
 ========TODO========
-bug: if simple inputs START WITH invalid char, gives NAN
 fix decimals/division in arithmetic modal
 handle errors in arithmetic modal in more detail
 
