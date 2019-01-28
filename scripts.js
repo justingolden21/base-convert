@@ -82,11 +82,11 @@ window.onkeyup = function(e) {
 		if(document.activeElement.classList.contains('baseInput') ) {
 			base = 10;
 		}
-		else if($('#baseCheckbox').is(':checked') ) {
+		else if($('#baseCheckbox').is(':checked') ) { //todo: check if baseInput is valid
 			base = $('#baseInput').val() || 10;
 		}
 		else {
-			if(document.activeElement.id=='val1Input') {
+			if(document.activeElement.id=='val1Input') {  //todo: check if baseInputs 1 and 2 are valid
 				base = $('#baseInput1').val() || 10;
 			} else { //val2Input
 				base = $('#baseInput2').val() || 10;

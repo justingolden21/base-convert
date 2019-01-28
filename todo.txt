@@ -12,8 +12,7 @@ fix decimals/division in arithmetic modal
 handle errors in arithmetic modal in more detail
 
 make decimals work (parseFloat doesn't take a radix as a parameter)
-make it so you cant enter incorrect digits into inputs, as opposed to ignoring them (for example, a "2" in binary input is ignored, make it so it goes away instead)
-fix arithmatic modal so that if you enter invalid digits for your chosen base it doesnt say NaN and instead displays an error message (bootstrap alert?)
+fix arithmatic modal for invalid digits as baseInputs
 
 ========MAYBE TODO========
 enter custom length (nible, byte, 4 bytes) and format to that/pad zeros
