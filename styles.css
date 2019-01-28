@@ -22,7 +22,13 @@ input:not([type=checkbox]):focus {
 	border: 2px solid #99f !important;
 	box-shadow: 3px 2px 0px #339 !important;
 }
-
+#errorP {
+	color: #933;
+	font-weight: bold;
+}
+tr.bg-info, .alert {
+	background-color: #ccf;
+}
 @media screen and (max-width: 768px) {
 	.alert {
 		display: none;

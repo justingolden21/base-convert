@@ -8,11 +8,12 @@ fixed many things about arithmetic modal
 fixed button and focused input aesthetic
 
 ========TODO========
+bug: if simple inputs START WITH invalid char, gives NAN
 fix decimals/division in arithmetic modal
 handle errors in arithmetic modal in more detail
 
-make decimal work (parseFloat doesn't take a radix as a parameter)
-make it so you cant enter incorrect digits into inputs, as opposed to ignoring them (for example, a "2" in binary input is ignotred, make it so it goes away instead)
+make decimals work (parseFloat doesn't take a radix as a parameter)
+make it so you cant enter incorrect digits into inputs, as opposed to ignoring them (for example, a "2" in binary input is ignored, make it so it goes away instead)
 fix arithmatic modal so that if you enter invalid digits for your chosen base it doesnt say NaN and instead displays an error message (bootstrap alert?)
 
 ========MAYBE TODO========

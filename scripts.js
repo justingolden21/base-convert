@@ -1,19 +1,18 @@
 window.onload = function() {
-
 	$('#binary').select();
 	
-	$('#binary').onchange = function(e) {
+	$('#binary').change(function(e) {
 		convert(e, 2);
-	}
-	$('#octal').onchange = function(e) {
+	});
+	$('#octal').change(function(e) {
 		convert(e, 8);
-	}
-	$('#decimal').onchange = function(e) {
+	});
+	$('#decimal').change(function(e) {
 		convert(e, 10);
-	}
-	$('#hex').onchange = function(e) {
+	});
+	$('#hex').change(function(e) {
 		convert(e, 16);
-	}
+	});
 
 	$('#printButton').click(function() {
 		let pageToPrint = window.open();
@@ -76,10 +75,10 @@ window.onkeyup = function(e) {
 		return;
 
 	let base = baseNames[document.activeElement.id];
-	let doHighlight = true;
+	let isSimple = true;
 
 	if(base==undefined) { //arithmetic modal, handle arrow keys to use correct base
-		doHighlight = false;
+		isSimple = false;
 		if(document.activeElement.classList.contains('baseInput') ) {
 			base = 10;
 		}
@@ -97,11 +96,11 @@ window.onkeyup = function(e) {
 
 	if(e.keyCode == 38) { //up
 		document.activeElement.value = add(document.activeElement.value, 1, base);
-		convert(e, base, doHighlight);
+		convert(e, base, isSimple);
 	}
 	else if(e.keyCode == 40) { //down
 		document.activeElement.value = add(document.activeElement.value, -1, base);
-		convert(e, base, doHighlight);
+		convert(e, base, isSimple);
 	}
 }
 
@@ -121,11 +120,22 @@ function handleOperation() {
 		else {
 			ans = doOperation($('#val1Input').val(), $('#baseInput1').val(), $('#val2Input').val(), $('#baseInput2').val(), $('#operationInput').val(), $('#baseInput3').val() );
 		}
-		$('#calcOutput').val(ans);
-	} catch(err) { //todo: handle error more specifically ie. invalid base or invalid value
-		$('#calcOutput').val('Error - Invalid Inputs');
+	
+		if(isNaN(ans) ) {
+			showError('Error - Invalid Inputs');
+		} else {
+			$('#calcOutput').val(ans);
+			$('#errorP').html('');		
+		}
+	} catch(err) {
+		showError('Error - Invalid Inputs');
 	}
 	$('#calcOutput').prop('disabled','true');
+}
+
+function showError(text) {
+	$('#calcOutput').val('');
+	$('#errorP').html(text);
 }
 
 function doOperation(val1, base1, val2, base2, operation, answerBase) {
@@ -144,7 +154,7 @@ function doOperation(val1, base1, val2, base2, operation, answerBase) {
 	return decimalAns.toString(answerBase).toUpperCase();
 }
 
-function convert(e, base, highlight=true) {
+function convert(e, base, isSimple) {
 	let val = $('#' + e.target.id).val();
 
 	let decimalAns = parseInt(val, base);
@@ -156,16 +166,16 @@ function convert(e, base, highlight=true) {
 	$('#octal').val(decimalAns.toString(8) );
 	$('#decimal').val(decimalAns);
 	$('#hex').val(decimalAns.toString(16).toUpperCase() );
-	
-	$('#valConsole').val(
-		'Bin: ' + decimalAns.toString(2) +
-		', Oct: ' + decimalAns.toString(8) +
-		', Dec: ' + decimalAns +
-		', Hex: ' + decimalAns.toString(16).toUpperCase() + '\n\n' +
-		$('#valConsole').val()
-	);
 
-	if(highlight) {
+	if(isSimple) {
+		$('#valConsole').val(
+			'Bin: ' + decimalAns.toString(2) +
+			', Oct: ' + decimalAns.toString(8) +
+			', Dec: ' + decimalAns +
+			', Hex: ' + decimalAns.toString(16).toUpperCase() + '\n\n' +
+			$('#valConsole').val()
+		);
+
 		$('tr').removeClass('bg-info');
 		if(decimalAns < 16 && decimalAns >= 0)
 			$('tr')[decimalAns+1].classList.add('bg-info');
