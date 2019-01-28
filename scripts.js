@@ -109,7 +109,11 @@ window.onkeyup = function(e) {
 function add(val, addend, base) {
 	let decimalAns = parseInt(val, base);
 	decimalAns += addend;
-	return decimalAns.toString(base).toUpperCase();
+	try {
+		return decimalAns.toString(base).toUpperCase();
+	} catch(err) {
+		showError('Error - Invalid Inputs');
+	}
 }
 
 function handleOperation() {
