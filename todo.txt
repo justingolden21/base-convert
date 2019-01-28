@@ -1,1 +1,3 @@
-add background image
+make history a details summary
+add link to readme
+make pwa?
