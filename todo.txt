@@ -1,1 +1,5 @@
-make pwa
+fix decimals/division in arithmetic modal
+handle errors in arithmetic modal in more detail
+
+add onchange inputs to handleOperaiton?
+make pwa?

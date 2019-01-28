@@ -20,49 +20,40 @@ enter comma seperated list of items to convert
 seperate app: calculate 2^n chart, ascii conversion chart, link here, and byte/kb/mb/gb converter
 */
 
-let baseInput, baseInput1, baseInput2, baseInput3, val1Input, val2Input, operationInput, calcOutput, valConsole;
-
 window.onload = function() {
-		
-	let binary = document.getElementById("binary");
-	let octal = document.getElementById("octal");
-	let decimal = document.getElementById("decimal");
-	let hex = document.getElementById("hex");
-	valConsole = document.getElementById("valConsole");
 
-	binary.select();
+	$('#binary').select();
 	
-	binary.onchange = function(e) {
+	$('#binary').onchange = function(e) {
 		convert(e, 2);
 	}
-	octal.onchange = function(e) {
+	$('#octal').onchange = function(e) {
 		convert(e, 8);
 	}
-	decimal.onchange = function(e) {
+	$('#decimal').onchange = function(e) {
 		convert(e, 10);
 	}
-	hex.onchange = function(e) {
+	$('#hex').onchange = function(e) {
 		convert(e, 16);
 	}
 
-	document.getElementById("printButton").onclick = function() {
+	$('#printButton').click(function() {
 		let pageToPrint = window.open();
-		pageToPrint.document.write("<title>Reference Table | Base Converter</title><img src='chart.png' onload='print();'>");
-	}
+		pageToPrint.document.write('<title>Reference Table | Base Converter</title><img src="chart.png" onload="print();">');
+	});
 
-	document.getElementById("reset").onclick = function() {
-		valConsole.value = "";
-	}
+	$('#reset').click(function() {
+		$('#valConsole').val('');
+	});
 
-	document.getElementById("downloadHistoryButton").onclick = function() {
-		let consoleValue = valConsole.value.split("\n");
+	$('#downloadHistoryButton').click(function() {
+		let consoleValue = $('#valConsole').val().split('\n');
 		let text = [];
 		for(item in consoleValue) {
-			text.push(consoleValue[item] + "\r\n");
+			text.push(consoleValue[item] + '\r\n');
 		}
-		let data = new Blob(text, {type: "text/plain"});
+		let data = new Blob(text, {type: 'text/plain'});
 		let textFile = window.URL.createObjectURL(data);
-
 
 		let link = document.createElement('a');
 		link.href = textFile;
@@ -70,35 +61,22 @@ window.onload = function() {
 		document.body.appendChild(link);
 		link.click();
 		document.body.removeChild(link);
-	}
+	});
 
-	let baseCheckbox = document.getElementById("baseCheckbox");
-
-	baseCheckbox.onchange = function() {
+	$('#baseCheckbox').change(function() {
 		if(this.checked) {
-			document.getElementById("basesDiv").style.display = "none";
-			document.getElementById("baseLabel").style.display = "";
+			$('#basesDiv').css('display','none');
+			$('#baseLabel').css('display','');
 		}
 		else {
-			document.getElementById("basesDiv").style.display = "";
-			document.getElementById("baseLabel").style.display = "none";
+			$('#basesDiv').css('display','');
+			$('#baseLabel').css('display','none');
 		}
-	}
+	});
 
+	$('#basesDiv').css('display','none');
 
-	baseInput = document.getElementById("baseInput");
-	baseInput1 = document.getElementById("baseInput1");
-	baseInput2 = document.getElementById("baseInput2");
-	baseInput3 = document.getElementById("baseInput3");
-	val1Input = document.getElementById("val1Input");
-	val2Input = document.getElementById("val2Input");
-	operationInput = document.getElementById("operationInput");
-	calcOutput = document.getElementById("calcOutput");
-
-	baseInput.onchange = baseInput1.onchange = baseInput2.onchange = baseInput3.onchange = val1Input.onchange = val2Input.onchange = operationInput.onchange = handleOperation;
-
-	document.getElementById("basesDiv").style.display = "none";
-
+	$('#calcButton').click(handleOperation);
 
 	$('#downloadChartButton').click(function() {
 		let link = document.createElement('a');
@@ -111,22 +89,41 @@ window.onload = function() {
 
 }
 
-let baseNames = {"binary":2, "octal":8, "decimal":10, "hex":16}
+let baseNames = {'binary':2, 'octal':8, 'decimal':10, 'hex':16};
 
 window.onkeyup = function(e) {
 	if(e.keyCode != 38 && e.keyCode != 40)
 		return;
-	if(document.activeElement.nodeName != "INPUT")
+	if(document.activeElement.nodeName != 'INPUT')
 		return;
 
 	let base = baseNames[document.activeElement.id];
+	let doHighlight = true;
+
+	if(base==undefined) { //arithmetic modal, handle arrow keys to use correct base
+		doHighlight = false;
+		if(document.activeElement.classList.contains('baseInput') ) {
+			base = 10;
+		}
+		else if($('#baseCheckbox').is(':checked') ) {
+			base = $('#baseInput').val() || 10;
+		}
+		else {
+			if(document.activeElement.id=='val1Input') {
+				base = $('#baseInput1').val() || 10;
+			} else { //val2Input
+				base = $('#baseInput2').val() || 10;
+			}
+		}
+	}
+
 	if(e.keyCode == 38) { //up
 		document.activeElement.value = add(document.activeElement.value, 1, base);
-		convert(e, base);
+		convert(e, base, doHighlight);
 	}
 	else if(e.keyCode == 40) { //down
 		document.activeElement.value = add(document.activeElement.value, -1, base);
-		convert(e, base);
+		convert(e, base, doHighlight);
 	}
 }
 
@@ -137,31 +134,31 @@ function add(val, addend, base) {
 }
 
 function handleOperation() {
-	calcOutput.disabled = "false";
+	$('#calcOutput').prop('disabled','false');
 	let ans;
 	try {
-		if(baseCheckbox.checked) {
-			ans = doOperation(val1Input.value, baseInput.value, val2Input.value, baseInput.value, operationInput.value, baseInput.value);
+		if($('#baseCheckbox').is(':checked') ) {
+			ans = doOperation($('#val1Input').val(), $('#baseInput').val(), $('#val2Input').val(), $('#baseInput').val(), $('#operationInput').val(), $('#baseInput').val() );
 		}
 		else {
-			ans = doOperation(val1Input.value, baseInput1.value, val2Input.value, baseInput2.value, operationInput.value, baseInput3.value);
+			ans = doOperation($('#val1Input').val(), $('#baseInput1').val(), $('#val2Input').val(), $('#baseInput2').val(), $('#operationInput').val(), $('#baseInput3').val() );
 		}
-		calcOutput.value = ans;
+		$('#calcOutput').val(ans);
 	} catch(err) { //todo: handle error more specifically ie. invalid base or invalid value
-		calcOutput.value = "Error - Invalid Inputs";
+		$('#calcOutput').val('Error - Invalid Inputs');
 	}
-	calcOutput.disabled = "true";
+	$('#calcOutput').prop('disabled','true');
 }
 
 function doOperation(val1, base1, val2, base2, operation, answerBase) {
 	let decimalVal1 = parseInt(val1, base1);
 	decimalVal2 = parseInt(val2, base2);
 	let decimalAns;
-	if(operation == "+")
+	if(operation == '+')
 		decimalAns = decimalVal1 + decimalVal2;
-	else if(operation == "-")
+	else if(operation == '-')
 		decimalAns = decimalVal1 - decimalVal2;
-	else if(operation == "/")
+	else if(operation == '/')
 		decimalAns = decimalVal1 / decimalVal2;
 	else
 		decimalAns = decimalVal1 * decimalVal2;
@@ -169,38 +166,33 @@ function doOperation(val1, base1, val2, base2, operation, answerBase) {
 	return decimalAns.toString(answerBase).toUpperCase();
 }
 
-
-
-function convert(e, base) {
-	let val = document.getElementById(e.target.id).value;
+function convert(e, base, highlight=true) {
+	let val = $('#' + e.target.id).val();
 
 	let decimalAns = parseInt(val, base);
 	if(isNaN(decimalAns) ) { //todo: show error?
 		return;
 	}
-	binary.value = decimalAns.toString(2);
-	octal.value = decimalAns.toString(8);
-	decimal.value = decimalAns;
-	hex.value = decimalAns.toString(16).toUpperCase();
-	
-	valConsole.value =
-	"Bin: " + decimalAns.toString(2) +
-	", Oct: " + decimalAns.toString(8) +
-	", Dec: " + decimalAns +
-	", Hex: " + decimalAns.toString(16).toUpperCase() + "\n\n" +	
-	valConsole.value;
 
-	//unhighlight row
-	let trs = document.getElementsByTagName("tr");
-	for(let i=0; i<trs.length; i++) {
-		trs[i].classList.remove("bg-info");
-	}
-	//highlight row if applicable
-	if(decimalAns < 16 && decimalAns >= 0) {
-		document.getElementsByTagName("tr")[decimalAns+1].classList.add("bg-info");
+	$('#binary').val(decimalAns.toString(2) );
+	$('#octal').val(decimalAns.toString(8) );
+	$('#decimal').val(decimalAns);
+	$('#hex').val(decimalAns.toString(16).toUpperCase() );
+	
+	$('#valConsole').val(
+		'Bin: ' + decimalAns.toString(2) +
+		', Oct: ' + decimalAns.toString(8) +
+		', Dec: ' + decimalAns +
+		', Hex: ' + decimalAns.toString(16).toUpperCase() + '\n\n' +
+		$('#valConsole').val()
+	);
+
+	if(highlight) {
+		$('tr').removeClass('bg-info');
+		if(decimalAns < 16 && decimalAns >= 0)
+			$('tr')[decimalAns+1].classList.add('bg-info');
 	}
 }
-
 
 //https://stackoverflow.com/questions/3900701/onclick-go-full-screen?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 function toggleFullscreen() {
