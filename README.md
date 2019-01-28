@@ -24,6 +24,8 @@ View your conversion history, download it, or clear it.
 
 Click the fullscreen button to go fullscreen, great for a classroom setting.
 
+<img src="in_progress.svg" width="450px">
+
 ### Keyboard Shortcuts
 
 Hit <kbd>Enter</kbd> (or <kbd>Tab</kbd>) to calculate other values
@@ -34,7 +36,7 @@ Use the <kbd>&uarr;</i></kbd> <kbd>&darr;</i></kbd> arrow keys to increment or d
 
 ### About
 
-Calculator image from https://undraw.co
+Calculator and gear images from https://undraw.co
 
 Contact: [contact@rgbstudios.org](mailto:contact@rgbstudios.org)
 
