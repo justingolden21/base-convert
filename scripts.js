@@ -111,7 +111,7 @@ function add(val, addend, base) {
 	decimalAns += addend;
 	try {
 		return decimalAns.toString(base).toUpperCase();
-	} catch(err) {
+	} catch(err) { //only catches if invalid base in arithmetic modal
 		showError('Error - Invalid Inputs');
 	}
 }
