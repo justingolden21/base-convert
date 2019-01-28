@@ -1,5 +1,31 @@
+========RECENT CHANGES========
+arrow keys up and down to change inputs
+download history
+highlight row of table if applicable
+added custom base and arithmetic
+
+fixed many things about arithmetic modal
+fixed button and focused input aesthetic
+
+========TODO========
+
 fix decimals/division in arithmetic modal
 handle errors in arithmetic modal in more detail
+update learn modal wording
+
+make decimal work (parseFloat doesn't take a radix as a parameter)
+make it so you cant enter incorrect digits into inputs, as opposed to ignoring them (for example, a "2" in binary input is ignotred, make it so it goes away instead)
+fix arithmatic modal so that if you enter invalid digits for your chosen base it doesnt say NaN and instead displays an error message (bootstrap alert?)
+
+
+========MAYBE TODO========
+enter custom length (nible, byte, 4 bytes) and format to that/pad zeros
+signed or unsigned?
+convert to ascii characters?
+maybe: copy and night mode button?
+tutorial on how to convert
+enter comma seperated list of items to convert
+seperate app: calculate 2^n chart, ascii conversion chart, link here, and byte/kb/mb/gb converter
 
 add onchange inputs to handleOperaiton?
 make pwa?
