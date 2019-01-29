@@ -1,4 +1,4 @@
-<img src="img/logo-alt.svg" width="144px">
+<img src="img/logo-alt-light.svg" width="144px">
 
 # [Base Converter](http://rgbstudios.org/base-convert) &mdash; RGB Studios
 
