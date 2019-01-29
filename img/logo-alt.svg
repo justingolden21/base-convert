@@ -3,6 +3,8 @@
 .st0{fill:#99f;}
 .st1{fill:#339;}
 </style>
+<path d="M0 0h64v64H0z" fill="#fff"/>
+
 <g transform="translate(3,5)">
 	<polygon class="st0" points="20,24 20,48 28,48 28,24 36,24 24,12 12,24"/>
 	<polygon class="st0" points="36,36 36,12 44,12 44,36 52,36 40,48 28,36"/>
