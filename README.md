@@ -26,6 +26,8 @@ View your conversion history, download it, or clear it.
 
 Click the fullscreen button to go fullscreen, great for a classroom setting.
 
+Also available as a progressive web app, meaning if you browse the website on mobile, you may be prompted to add it to your homescreen.
+
 <img src="img/in_progress.svg" width="450px">
 
 ### Keyboard Shortcuts
