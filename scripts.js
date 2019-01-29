@@ -1,5 +1,6 @@
 window.onload = function() {
 	$('#binary').select();
+
 	
 	$('#binary').change(function(e) {
 		convert(e, 2);
@@ -13,6 +14,8 @@ window.onload = function() {
 	$('#hex').change(function(e) {
 		convert(e, 16);
 	});
+
+	$('#binary').keyup();
 
 	$('#printButton').click(function() {
 		let pageToPrint = window.open();

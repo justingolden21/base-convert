@@ -1,3 +1,6 @@
+* {
+	color: #333;
+}
 textarea {
 	resize: vertical;
 }
@@ -26,11 +29,17 @@ input:not([type=checkbox]):focus {
 	color: #933;
 	font-weight: bold;
 }
-tr.bg-info, .alert {
-	background-color: #ccf;
+tr.bg-info, tr.bg-info:hover {
+	background-color: #339 !important;
+	color: #fff !important;
 }
 .alert {
-	border-color: #99f;
+	background-color: #fff;
+	border: 2px solid #339;
+}
+.alert a.close {
+	color: #333 !important;
+	opacity: 1;
 }
 @media screen and (max-width: 768px) {
 	.alert {

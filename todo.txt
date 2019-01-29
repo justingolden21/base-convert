@@ -8,6 +8,7 @@ fixed many things about arithmetic modal
 fixed button and focused input aesthetic
 
 ========TODO========
+entering base of 100 breaks arithmetic modal
 fix decimals/division in arithmetic modal
 make decimals work (parseFloat doesn't take a radix as a parameter)
 
