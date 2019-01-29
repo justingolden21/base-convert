@@ -8,17 +8,15 @@ fixed many things about arithmetic modal
 fixed button and focused input aesthetic
 
 ========TODO========
-entering base of 100 breaks arithmetic modal
 fix decimals/division in arithmetic modal
 make decimals work (parseFloat doesn't take a radix as a parameter)
 
 ========MAYBE TODO========
+add screenshots to readme?
 enter custom length (nible, byte, 4 bytes) and format to that/pad zeros
 signed or unsigned?
 convert to ascii characters?
 maybe: copy and night mode button?
 enter comma seperated list of items to convert
 seperate app: calculate 2^n chart, ascii conversion chart, and byte/kb/mb/gb converter (add links to those on this site)
-
-add onchange inputs to handleOperaiton?
 make pwa?

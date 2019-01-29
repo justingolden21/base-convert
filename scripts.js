@@ -57,6 +57,13 @@ window.onload = function() {
 	$('#basesDiv').css('display','none');
 
 	$('#calcButton').click(handleOperation);
+	$('#val1Input').keyup(handleOperation);
+	$('#val2Input').keyup(handleOperation);
+	$('#operationInput').change(handleOperation);
+	$('#baseInput').keyup(handleOperation);
+	$('#baseInput1').keyup(handleOperation);
+	$('#baseInput2').keyup(handleOperation);
+	$('#baseInput3').keyup(handleOperation);
 
 	$('#downloadChartButton').click(function() {
 		let link = document.createElement('a');

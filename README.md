@@ -20,6 +20,8 @@ If applicable, the corresponding row in the chart will be highlighted.
 
 Click "Arithmetic" for operations such as addition, subtraction, multiplication, and division, and even enter your inputs in two different bases and convert to a third.
 
+Only supports bases up to 36.
+
 View your conversion history, download it, or clear it.
 
 Click the fullscreen button to go fullscreen, great for a classroom setting.
