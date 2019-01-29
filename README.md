@@ -40,7 +40,7 @@ Use the <kbd>&uarr;</i></kbd> <kbd>&darr;</i></kbd> arrow keys to increment or d
 
 Base Converter scales well for mobile, and is also available as a progressive web app.
 
-<img src="img/screenshot-mobile.png" width="222px">
+<img src="img/screenshot-pwa.png" width="270px"> &nbsp;&nbsp;&nbsp;&nbsp; <img src="img/screenshot-mobile.png" width="222px">
 
 ### About
 
