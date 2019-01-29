@@ -1,3 +1,4 @@
+/*generic*/
 textarea {
 	resize: vertical;
 }
@@ -18,24 +19,38 @@ img, br, a.close {
 	user-drag: none;
 	-webkit-touch-callout: none;
 }
-input:not([type=checkbox]):focus {
+input:not([type=checkbox]):focus, textarea:focus {
 	border: 2px solid #99f !important;
 	box-shadow: 3px 2px 0px #339 !important;
 }
-.errorP {
-	color: #933;
-	font-weight: bold;
+input, .alert, table, textarea, button {
+	border-radius: 0px !important;  /*try 10px?*/
 }
-tr.bg-info, tr.bg-info:hover, .alert {
+
+/*table*/
+tr.bg-info, tr.bg-info:hover {
 	background-color: #ccf !important;
 }
+tr:hover:not(.bg-info) {
+	background-color: #ccc;
+}
+
+/*alert*/
 .alert {
+	background-color: #ccf;
 	border: 0;
 }
 .alert a.close {
 	color: #fff;
 	opacity: 1;
 }
+
+/*misc*/
+.errorP {
+	color: #933;
+	font-weight: bold;
+}
+
 @media screen and (max-width: 768px) {
 	.alert {
 		display: none;
