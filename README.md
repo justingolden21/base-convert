@@ -30,9 +30,9 @@ Click the fullscreen button to go fullscreen, great for a classroom setting.
 
 ### Keyboard Shortcuts
 
-Hit <kbd>Enter</kbd> (or <kbd>Tab</kbd>) to calculate other values
-
 Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to navigate inputs
+
+Hit <kbd>Enter</kbd> (or <kbd>Tab</kbd>) to calculate other values
 
 Use the <kbd>&uarr;</i></kbd> <kbd>&darr;</i></kbd> arrow keys to increment or decrement your input
 

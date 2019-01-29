@@ -19,7 +19,7 @@ img, br, a.close {
 	user-drag: none;
 	-webkit-touch-callout: none;
 }
-input:not([type=checkbox]):focus, textarea:focus {
+input:not([type=checkbox]):focus, textarea:focus, button:focus, a:focus {
 	border: 2px solid #99f !important;
 	box-shadow: 3px 2px 0px #339 !important;
 }
