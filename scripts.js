@@ -1,6 +1,5 @@
 window.onload = function() {
 	$('#binary').select();
-
 	
 	$('#binary').change(function(e) {
 		convert(e, 2);
@@ -74,6 +73,9 @@ window.onload = function() {
 		document.body.removeChild(link);
 	});
 
+	$('input[type=text]').click(function() {
+		this.setSelectionRange(0, this.value.length);
+	});
 }
 
 let baseNames = {'binary':2, 'octal':8, 'decimal':10, 'hex':16};

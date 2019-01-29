@@ -31,8 +31,8 @@ input, .alert, table, textarea, button {
 tr.bg-info, tr.bg-info:hover {
 	background-color: #ccf !important;
 }
-tr:hover:not(.bg-info) {
-	background-color: #ccc;
+tr:hover:not(.bg-info), button:hover {
+	background-color: #e6e6e6 !important;
 }
 
 /*alert*/
