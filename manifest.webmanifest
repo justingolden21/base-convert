@@ -1,6 +1,6 @@
 {
 	"name": "Base Converter",
-	"short_name": "Base Converter",
+	"short_name": "Base Convert",
 	"start_url": "index.html",
 	"display": "standalone",
 	"background_color": "#339",
