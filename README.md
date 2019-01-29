@@ -1,4 +1,4 @@
-<img src="logo-alt.svg" width="64px">
+<img src="img/logo-alt.svg" width="64px">
 
 [Base Converter](http://rgbstudios.org/base-convert) &mdash; RGB Studios
 
@@ -6,7 +6,7 @@
 
 http://rgbstudios.org/base-convert
 
-<img src="calculator.svg" width="450px">
+<img src="img/calculator.svg" width="450px">
 
 ### Features
 
@@ -14,7 +14,7 @@ Convert between binary(2), octal(8), decimal(10) and hex(16).
 
 View, download, or print our quick reference chart:
 
-<img src="chart.png">
+<img src="img/chart.png">
 
 If applicable, the corresponding row in the chart will be highlighted.
 
@@ -24,7 +24,7 @@ View your conversion history, download it, or clear it.
 
 Click the fullscreen button to go fullscreen, great for a classroom setting.
 
-<img src="in_progress.svg" width="450px">
+<img src="img/in_progress.svg" width="450px">
 
 ### Keyboard Shortcuts
 

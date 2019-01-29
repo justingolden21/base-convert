@@ -15,11 +15,11 @@ window.onload = function() {
 		convert(e, 16);
 	});
 
-	$('#binary').keyup();
+	$('tr')[1].classList.add('bg-info');
 
 	$('#printButton').click(function() {
 		let pageToPrint = window.open();
-		pageToPrint.document.write('<title>Reference Table | Base Converter</title><img src="chart.png" onload="print();">');
+		pageToPrint.document.write('<title>Reference Table | Base Converter</title><img src="img/chart.png" onload="print();">');
 	});
 
 	$('#reset').click(function() {
@@ -60,7 +60,7 @@ window.onload = function() {
 
 	$('#downloadChartButton').click(function() {
 		let link = document.createElement('a');
-		link.href = 'chart.png';
+		link.href = 'img/chart.png';
 		link.download = 'base chart.png';
 		document.body.appendChild(link);
 		link.click();
