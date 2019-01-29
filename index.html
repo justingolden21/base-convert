@@ -42,7 +42,7 @@
 				<input id="decimal" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>10 </sub><label> Decimal</label>
 			</div>
 			<div class="col-sm-6 col-lg-3">
-				<input id="hex" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0"><sub>16 </sub><label> Hex</label>
+				<input id="hex" class="form-control input-lg text-center" onclick="this.setSelectionRange(0, this.value.length)" type="text" value="0" spellcheck="false"><sub>16 </sub><label> Hex</label>
 			</div>
 		</div>
 
@@ -55,10 +55,12 @@
 		<p id="simpleError" class="errorP"></p>
 		<hr>
 		<div class="form-group text-center">
-			<label for="valConsole"><button class="btn btn-sm btn-default"><i id="reset" title="reset history" class="fas fa-history"></i></button> History</label>
+			<label for="valConsole">
+				<button class="btn btn-sm btn-default" title="reset history"><i id="reset" class="fas fa-history"></i> Reset</button>
+				&nbsp;&nbsp; History &nbsp;&nbsp;
+				<button id="downloadHistoryButton" class="btn btn-sm btn-default" title="download history as text file"><i class="fas fa-download"></i> Download</button>
+			</label>
 			<textarea id="valConsole" class="form-control text-center" rows="5"></textarea>
-			<br>
-			<button id="downloadHistoryButton" class="btn btn-sm btn-default" title="download history as text file"><i class="fas fa-download"></i> Download history</button>
 		</div>
 		<hr>
 

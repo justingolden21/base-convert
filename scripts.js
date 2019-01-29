@@ -104,6 +104,7 @@ window.onkeyup = function(e) {
 	}
 	if(document.activeElement.value == 'NAN')
 		document.activeElement.value = '0';
+	document.activeElement.select();
 }
 
 function add(val, addend, base) {
