@@ -28,7 +28,14 @@ function precache() {
     return cache.addAll([
       'index.html',
       'styles.css',
-      'scripts.js'
+      'scripts.js',
+      'img/logo-144.png',
+      'img/logo-168.png',
+      'img/logo-192.png',
+      'img/logo-48.png',
+      'img/logo-512.png',
+      'img/logo-72.png',
+      'img/logo-96.png'
     ]);
   });
 }
