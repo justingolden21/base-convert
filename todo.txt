@@ -19,4 +19,3 @@ convert to ascii characters?
 maybe: copy and night mode button?
 enter comma seperated list of items to convert
 seperate app: calculate 2^n chart, ascii conversion chart, and byte/kb/mb/gb converter (add links to those on this site)
-make pwa?
