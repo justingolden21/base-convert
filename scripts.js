@@ -145,7 +145,7 @@ function handleOperation() {
 
 function showError(text) {
 	$('#calcOutput').val('');
-	$('#complexError').html(text);
+	$('#complexError').html('<i class="fas fa-exclamation-circle"></i> ' + text);
 }
 
 function doOperation(val1, base1, val2, base2, operation, answerBase) {
@@ -166,11 +166,10 @@ function doOperation(val1, base1, val2, base2, operation, answerBase) {
 
 function convert(e, base, isSimple) {
 	let val = $('#' + e.target.id).val() || '0';
-	console.log(val);
 
 	let decimalAns = parseInt(val, base);
 	if(isNaN(decimalAns) ) {
-		$('#simpleError').html('Invalid input');
+		$('#simpleError').html('<i class="fas fa-exclamation-circle"></i> Invalid input');
 		// e.target.value = '0';
 		return;
 	}
