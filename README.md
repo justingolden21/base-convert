@@ -1,6 +1,6 @@
-<img src="logo-alt.svg" width="64px">
+<img src="logo-alt.svg" width="144px">
 
-[Base Converter](http://rgbstudios.org/base-convert) &mdash; RGB Studios
+# [Base Converter](http://rgbstudios.org/base-convert) &mdash; RGB Studios
 
 **A simple number base converter with a reference chart**
 
