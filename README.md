@@ -12,7 +12,7 @@ http://rgbstudios.org/base-convert
 
 ### Features
 
-Convert between binary<sub>2</sub>, octal(<sub>8</sub>, decimal<sub>10</sub> and hex<sub>16</sub>.
+Convert between binary<sub>2</sub>, octal<sub>8</sub>, decimal<sub>10</sub> and hex<sub>16</sub>.
 
 View, download, or print our quick reference chart (available [here](https://rgbstudios.org/base-convert/img/chart.png))
 
