@@ -8,6 +8,7 @@ fixed many things about arithmetic modal
 fixed button and focused input aesthetic
 
 ========TODO========
+arithmetic modal output base 16 doesnt work? large number inputs addition base 16/10?
 fix decimals/division in arithmetic modal
 make decimals work (parseFloat doesn't take a radix as a parameter)
 
